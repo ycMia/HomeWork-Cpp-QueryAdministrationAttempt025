@@ -40,6 +40,8 @@
 # Exclude the Project
 /Default Solution/UnitTest*/x64/
 /Default Solution/MainRun/x64/
+/Default Solution/Field*/x64/
+/Default Solution/OldFriendWindowsForm/x64/
 /Default Solution/.vs/
 /Default Solution/x64/
 

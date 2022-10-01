@@ -26,7 +26,7 @@ public:
 		}
 		else
 			std::cout << "Path exists." << std::endl;
-			
+		this->_Instance = this;
 	}
 
 	/*ofstream StartWritingFile(path filePath)
@@ -35,5 +35,6 @@ public:
 	}*/
 
 private:
+	IOManager * _Instance;
 	path operationPath;
 };
