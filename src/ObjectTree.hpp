@@ -3,55 +3,42 @@
 #include<iostream>
 #include<sstream>
 #include<filesystem>
+#include<fstream>
 
 using namespace std;
 
+#define MAX_UNDEFINED_HASH_LENGTH 32
 namespace MyTree
 {
-#define MAX_UNDEFINED_HASH_LENGTH 32
+	//Led your Acrobystia off
+	string DHeavyMedalHead(string);
+	string GetHeavyMedalHead(string);
+	string GenerateHash(int);
+
 	class ObjectNode
 	{
 	public:
-		ObjectNode(string strSet)
-		{
-			_hashID = strSet;
-		}
-
 		//The deafult construct function initiates out the _hashID
-		ObjectNode()
+		ObjectNode(void);
+		ObjectNode(string strSet);
+		void GetNode(std::string hash);
+		std::string GetID();
+		void PlaceTo(std::filesystem::path path);
+		string DumpData();
+		string _data;
+		void OverWriteData(string);
+		ObjectNode operator= (ObjectNode other)
 		{
-			stringstream ss;
-			
-			srand((unsigned int)time(0));
-			for (int i = 0; i < MAX_UNDEFINED_HASH_LENGTH; i++)
-			{
-				int t = rand() % 16;
-				ss.put((t < 10) ? (char)t + '0' : (char)t + 'a' - 10);
-			}
-			_hashID = ss.str();
-		}
-		~ObjectNode()
-		{
-
-		}
-		void GetTree(std::string hash)
-		{
-
-		}
-		std::string GetID()
-		{
-			return _hashID;
-		}
-
-		void PlaceTo(std::filesystem::path path)
-		{
-
+			_data = other._data;
+			_hashID = other._hashID;
+			return *this;
 		}
 	private:
 		ObjectNode* next = NULL;
 		std::string _hashID;
 	};
-#undef MAX_UNDEFINED_HASH_LENGTH
+
 }
+#undef MAX_UNDEFINED_HASH_LENGTH
 
 
